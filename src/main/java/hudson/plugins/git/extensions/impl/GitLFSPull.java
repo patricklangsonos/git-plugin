@@ -28,6 +28,7 @@ import org.jenkinsci.plugins.gitclient.CheckoutCommand;
 import org.jenkinsci.plugins.gitclient.GitClient;
 import org.kohsuke.stapler.AncestorInPath;
 import org.kohsuke.stapler.DataBoundConstructor;
+import org.kohsuke.stapler.DataBoundSetter;
 import org.kohsuke.stapler.QueryParameter;
 
 /**
@@ -39,7 +40,13 @@ public class GitLFSPull extends GitSCMExtension {
     private String credentialsId;
 
     @DataBoundConstructor
-    public GitLFSPull(@CheckForNull String credentialsId) {
+    public GitLFSPull() {
+        this.credentialsId = "";
+    }
+
+
+    @DataBoundSetter
+    public void setCredentialsId(@CheckForNull String credentialsId) {
         this.credentialsId = credentialsId;
     }
 
