@@ -870,16 +870,6 @@ public class GitSCM extends GitSCMBackwardCompatibility {
                 StandardUsernameCredentials credentials = CredentialsMatchers.firstOrNull(urlCredentials, idMatcher);
                 if (credentials != null) {
                     c.addCredentials(url, credentials);
-                    if(!isHideCredentials()) {
-                        listener.getLogger().println(format("using credential %s", credentials.getId()));
-                    }
-                    if (project != null && project.getLastBuild() != null) {
-                        CredentialsProvider.track(project.getLastBuild(), credentials);
-                    }
-                } else {
-                    if(!isHideCredentials()) {
-                        listener.getLogger().println(format("Warning: CredentialId \"%s\" could not be found.", ucCredentialsId));
-                    }
                 }
             }
         }
